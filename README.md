@@ -1,8 +1,8 @@
 # factory_game
 
 [![Godot](https://img.shields.io/badge/Godot-4.7-478cbf?logo=godotengine&logoColor=white)](https://godotengine.org/)
-[![Project](https://img.shields.io/badge/Project-factory__game-2f855a)]()
-[![Tests](https://img.shields.io/badge/tests-centralized%20runner-8b5cf6)]()
+[![Project](https://img.shields.io/badge/Project-factory__game-2f855a)](https://github.com/phbrandes/factory_game)
+[![Tests](https://img.shields.io/badge/tests-centralized%20runner-8b5cf6)](https://github.com/phbrandes/factory_game/tree/main/tests)
 
 Godot 4.x factory automation roguelike focused on deterministic simulation, replayability, and testable data-first gameplay systems.
 
