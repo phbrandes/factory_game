@@ -10,7 +10,7 @@ var visual_map: Dictionary = {} # Maps GridEntity reference to its visual Node2D
 # For testing, we mock a mapping of entity_id strings to basic Sprite2D nodes.
 var visual_registry: Dictionary = {} 
 
-@onready var tile_map: TileMapLayer = $TileMapLayer
+@onready var tile_map: TileMapLayer = get_node_or_null("TileMapLayer") as TileMapLayer
 
 func setup(p_grid: GridManager) -> void:
 	simulation_grid = p_grid

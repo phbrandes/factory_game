@@ -19,15 +19,18 @@ func _test_deterministic_priority() -> void:
 	turret.grid_position = Vector2i(0, 0)
 	
 	# Enemy A: Created tick 100, HP 30
-	var enemy_a = EnemyEntityRef.new("swarm_1", 30, 100, 5)
+	var enemy_a = EnemyEntityRef.new("swarm_1", 30, 100)
+	enemy_a.speed_ticks = 5
 	enemy_a.grid_position = Vector2i(3, 0)
 	
 	# Enemy B: Created tick 50 (Older!), HP 30
-	var enemy_b = EnemyEntityRef.new("swarm_2", 30, 50, 5)
+	var enemy_b = EnemyEntityRef.new("swarm_2", 30, 50)
+	enemy_b.speed_ticks = 5
 	enemy_b.grid_position = Vector2i(0, 4)
 	
 	# Enemy C: Created tick 50 (Same age as B), HP 20 (Lower Health!)
-	var enemy_c = EnemyEntityRef.new("swarm_3", 20, 50, 5)
+	var enemy_c = EnemyEntityRef.new("swarm_3", 20, 50)
+	enemy_c.speed_ticks = 5
 	enemy_c.grid_position = Vector2i(-2, -2)
 	
 	var swarm: Array[EnemyEntity] = [enemy_a, enemy_b, enemy_c]
@@ -56,7 +59,8 @@ func _test_fire_rate_cooldown() -> void:
 	turret.grid_position = Vector2i(0, 0)
 	turret.fire_rate_ticks = 3 # Takes 3 ticks to reload
 	
-	var enemy = EnemyEntityRef.new("swarm_1", 50, 1, 5)
+	var enemy = EnemyEntityRef.new("swarm_1", 50, 1)
+	enemy.speed_ticks = 5
 	enemy.grid_position = Vector2i(1, 0)
 	
 	var swarm: Array[EnemyEntity] = [enemy]
