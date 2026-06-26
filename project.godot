@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/features=PackedStringArray("4.7")
 config/name="FactorySimulation"
+config/features=PackedStringArray("4.7")
 
 [autoload]
 
