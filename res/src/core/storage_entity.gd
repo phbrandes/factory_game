@@ -1,4 +1,3 @@
-class_name StorageEntity
 extends GridEntity
 
 ## Pure data representation of a storage container (e.g., a chest or silo).

@@ -1,4 +1,3 @@
-class_name ProductionEntity
 extends GridEntity
 
 ## Pure data representation of a production machine with optional power consumption.

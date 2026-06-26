@@ -26,7 +26,7 @@ class TargetingComponent:
 	## Deterministic targeting: sort by age then health
 	func get_best_target(my_pos: Vector2i, potential_targets: Array) -> Object:
 		var targets_in_range = potential_targets.filter(func(t): 
-			return (t.position - my_pos).length_squared() <= range_tiles * range_tiles)
+			return (t.grid_position - my_pos).length_squared() <= range_tiles * range_tiles)
 		
 		if targets_in_range.is_empty():
 			return null

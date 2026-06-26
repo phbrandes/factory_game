@@ -1,4 +1,3 @@
-class_name ResearchEntity
 extends GridEntity
 
 ## A laboratory machine that consumes items to advance the ProgressionManager.

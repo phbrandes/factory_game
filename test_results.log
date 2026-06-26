@@ -1,0 +1,322 @@
+Godot Engine v4.7.stable.arch_linux.5b4e0cb0f (2026-06-17 18:46:02 UTC) - https://godotengine.org
+
+--- Starting Full Project Test Suite ---
+Executing: res://tests/belt_segment_test.gd
+Running BeltSegment Tests...
+SCRIPT ERROR: Assertion failed: Belt B failed to receive item from Belt A.
+          at: _test_cross_segment_transfer (res://tests/belt_segment_test.gd:69)
+          GDScript backtrace (most recent call first):
+              [0] _test_cross_segment_transfer (res://tests/belt_segment_test.gd:69)
+              [1] run_tests (res://tests/belt_segment_test.gd:10)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All BeltSegment tests passed.
+Executing: res://tests/belt_visualizer_test.gd
+Running BeltVisualizer Tests...
+SCRIPT ERROR: Invalid assignment of property or key 'previous_items' with value of type 'Array' on a base object of type 'Node2D (BeltVisualizer)'.
+          at: _test_lerp_math (res://tests/belt_visualizer_test.gd:32)
+          GDScript backtrace (most recent call first):
+              [0] _test_lerp_math (res://tests/belt_visualizer_test.gd:32)
+              [1] run_tests (res://tests/belt_visualizer_test.gd:12)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All BeltVisualizer tests passed.
+Executing: res://tests/crafting_component_test.gd
+Running CraftingComponent Tests...
+SCRIPT ERROR: Assertion failed: Progress failed to advance.
+          at: _test_successful_craft (res://tests/crafting_component_test.gd:35)
+          GDScript backtrace (most recent call first):
+              [0] _test_successful_craft (res://tests/crafting_component_test.gd:35)
+              [1] run_tests (res://tests/crafting_component_test.gd:12)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid access to property or key 'iron_gear' on a base object of type 'Dictionary'.
+          at: _test_output_backpressure (res://tests/crafting_component_test.gd:73)
+          GDScript backtrace (most recent call first):
+              [0] _test_output_backpressure (res://tests/crafting_component_test.gd:73)
+              [1] run_tests (res://tests/crafting_component_test.gd:14)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All CraftingComponent tests passed.
+Executing: res://tests/extractor_entity_test.gd
+SCRIPT ERROR: Parse Error: Class "StorageEntity" hides a global script class.
+          at: GDScript::reload (res://src/core/storage_entity.gd:1)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Parse Error: Class "ProductionEntity" hides a global script class.
+          at: GDScript::reload (res://src/core/production_entity.gd:1)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/extractor_entity_test.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+ERROR: Failed to load script "res://tests/extractor_entity_test.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] execute_test_file (res://tests/main_test_runner.gd:32)
+       [1] run_all_tests (res://tests/main_test_runner.gd:26)
+       [2] _ready (res://tests/main_test_runner.gd:8)
+Running ExtractorEntity Tests...
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_successful_transfer (res://tests/extractor_entity_test.gd:23)
+          GDScript backtrace (most recent call first):
+              [0] _test_successful_transfer (res://tests/extractor_entity_test.gd:23)
+              [1] run_tests (res://tests/extractor_entity_test.gd:15)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_starvation_and_backpressure (res://tests/extractor_entity_test.gd:56)
+          GDScript backtrace (most recent call first):
+              [0] _test_starvation_and_backpressure (res://tests/extractor_entity_test.gd:56)
+              [1] run_tests (res://tests/extractor_entity_test.gd:16)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_furnace_extraction (res://tests/extractor_entity_test.gd:89)
+          GDScript backtrace (most recent call first):
+              [0] _test_furnace_extraction (res://tests/extractor_entity_test.gd:89)
+              [1] run_tests (res://tests/extractor_entity_test.gd:17)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All ExtractorEntity tests passed.
+Executing: res://tests/factory_renderer_test.gd
+Running FactoryRenderer Tests...
+ERROR: Node not found: "TileMapLayer" (relative to "/root/TestRunner/@Node@8/@Node2D@9").
+   at: get_node (scene/main/node.cpp:1975)
+   GDScript backtrace (most recent call first):
+       [0] @implicit_ready (res://src/visuals/factory_renderer.gd:13)
+       [1] _test_visual_spawning_and_cleanup (res://tests/factory_renderer_test.gd:22)
+       [2] run_tests (res://tests/factory_renderer_test.gd:12)
+       [3] execute_test_file (res://tests/main_test_runner.gd:40)
+       [4] run_all_tests (res://tests/main_test_runner.gd:26)
+       [5] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid access to property or key 'entity_placed' on a base object of type 'RefCounted (GridManager)'.
+          at: FactoryRenderer.setup (res://src/visuals/factory_renderer.gd:17)
+          GDScript backtrace (most recent call first):
+              [0] setup (res://src/visuals/factory_renderer.gd:17)
+              [1] _test_visual_spawning_and_cleanup (res://tests/factory_renderer_test.gd:31)
+              [2] run_tests (res://tests/factory_renderer_test.gd:12)
+              [3] execute_test_file (res://tests/main_test_runner.gd:40)
+              [4] run_all_tests (res://tests/main_test_runner.gd:26)
+              [5] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Assertion failed: Renderer failed to track new entity.
+          at: _test_visual_spawning_and_cleanup (res://tests/factory_renderer_test.gd:38)
+          GDScript backtrace (most recent call first):
+              [0] _test_visual_spawning_and_cleanup (res://tests/factory_renderer_test.gd:38)
+              [1] run_tests (res://tests/factory_renderer_test.gd:12)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All FactoryRenderer tests passed.
+Executing: res://tests/flow_field_test.gd
+Running FlowField Tests...
+SCRIPT ERROR: Invalid call. Nonexistent function 'is_walkable' in base 'RefCounted (GridManager)'.
+          at: FlowField._generate (res://src/core/combat/flow_field.gd:31)
+          GDScript backtrace (most recent call first):
+              [0] _generate (res://src/core/combat/flow_field.gd:31)
+              [1] _init (res://src/core/combat/flow_field.gd:14)
+              [2] _test_propagation (res://tests/flow_field_test.gd:16)
+              [3] run_tests (res://tests/flow_field_test.gd:8)
+              [4] execute_test_file (res://tests/main_test_runner.gd:40)
+              [5] run_all_tests (res://tests/main_test_runner.gd:26)
+              [6] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Assertion failed: Incorrect direction vector.
+          at: _test_propagation (res://tests/flow_field_test.gd:19)
+          GDScript backtrace (most recent call first):
+              [0] _test_propagation (res://tests/flow_field_test.gd:19)
+              [1] run_tests (res://tests/flow_field_test.gd:8)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All FlowField tests passed.
+Executing: res://tests/grid_manager_test.gd
+Running GridManager Tests...
+All GridManager tests passed.
+Executing: res://tests/logistics_router_test.gd
+Running LogisticsRouter Tests...
+All LogisticsRouter tests passed.
+Executing: res://tests/player_interaction_test.gd
+Running PlayerInteraction Tests...
+All PlayerInteraction tests passed.
+Executing: res://tests/powered_production_test.gd
+Running PoweredProduction Tests...
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_powered_crafting_stall (res://tests/powered_production_test.gd:15)
+          GDScript backtrace (most recent call first):
+              [0] _test_powered_crafting_stall (res://tests/powered_production_test.gd:15)
+              [1] run_tests (res://tests/powered_production_test.gd:9)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All PoweredProduction tests passed.
+Executing: res://tests/power_system_test.gd
+Running PowerSystem Tests...
+All PowerSystem tests passed.
+Executing: res://tests/production_entities_test.gd
+SCRIPT ERROR: Parse Error: Class "MinerEntity" hides a global script class.
+          at: GDScript::reload (res://src/core/miner_entity.gd:1)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/production_entities_test.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+ERROR: Failed to load script "res://tests/production_entities_test.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] execute_test_file (res://tests/main_test_runner.gd:32)
+       [1] run_all_tests (res://tests/main_test_runner.gd:26)
+       [2] _ready (res://tests/main_test_runner.gd:8)
+Running Production Entities Tests...
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_production_entity_integration (res://tests/production_entities_test.gd:19)
+          GDScript backtrace (most recent call first):
+              [0] _test_production_entity_integration (res://tests/production_entities_test.gd:19)
+              [1] run_tests (res://tests/production_entities_test.gd:12)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_miner_entity_generation (res://tests/production_entities_test.gd:43)
+          GDScript backtrace (most recent call first):
+              [0] _test_miner_entity_generation (res://tests/production_entities_test.gd:43)
+              [1] run_tests (res://tests/production_entities_test.gd:13)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All Production Entities tests passed.
+Executing: res://tests/progression_system_test.gd
+SCRIPT ERROR: Parse Error: Class "ResearchEntity" hides a global script class.
+          at: GDScript::reload (res://src/core/progression/research_entity.gd:1)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/progression_system_test.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+ERROR: Failed to load script "res://tests/progression_system_test.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] execute_test_file (res://tests/main_test_runner.gd:32)
+       [1] run_all_tests (res://tests/main_test_runner.gd:26)
+       [2] _ready (res://tests/main_test_runner.gd:8)
+Running Progression System Tests...
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_research_entity_consumption (res://tests/progression_system_test.gd:33)
+          GDScript backtrace (most recent call first):
+              [0] _test_research_entity_consumption (res://tests/progression_system_test.gd:33)
+              [1] run_tests (res://tests/progression_system_test.gd:13)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_item_rejection (res://tests/progression_system_test.gd:55)
+          GDScript backtrace (most recent call first):
+              [0] _test_item_rejection (res://tests/progression_system_test.gd:55)
+              [1] run_tests (res://tests/progression_system_test.gd:14)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All Progression System tests passed.
+Executing: res://tests/splitter_entity_test.gd
+Running SplitterEntity Tests...
+SCRIPT ERROR: Assertion failed: Third item did not wrap back to Output A.
+          at: _test_round_robin_split (res://tests/splitter_entity_test.gd:41)
+          GDScript backtrace (most recent call first):
+              [0] _test_round_robin_split (res://tests/splitter_entity_test.gd:41)
+              [1] run_tests (res://tests/splitter_entity_test.gd:11)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All SplitterEntity tests passed.
+Executing: res://tests/storage_entity_test.gd
+Running StorageEntity Tests...
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_inventory_limits (res://tests/storage_entity_test.gd:17)
+          GDScript backtrace (most recent call first):
+              [0] _test_inventory_limits (res://tests/storage_entity_test.gd:17)
+              [1] run_tests (res://tests/storage_entity_test.gd:11)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _test_belt_to_storage_transfer (res://tests/storage_entity_test.gd:31)
+          GDScript backtrace (most recent call first):
+              [0] _test_belt_to_storage_transfer (res://tests/storage_entity_test.gd:31)
+              [1] run_tests (res://tests/storage_entity_test.gd:12)
+              [2] execute_test_file (res://tests/main_test_runner.gd:40)
+              [3] run_all_tests (res://tests/main_test_runner.gd:26)
+              [4] _ready (res://tests/main_test_runner.gd:8)
+All StorageEntity tests passed.
+Executing: res://tests/turret_targeting_test.gd
+SCRIPT ERROR: Parse Error: Too many arguments for "new()" call. Expected at most 3 but received 4.
+          at: GDScript::reload (res://tests/turret_targeting_test.gd:22)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Parse Error: Too many arguments for "new()" call. Expected at most 3 but received 4.
+          at: GDScript::reload (res://tests/turret_targeting_test.gd:26)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Parse Error: Too many arguments for "new()" call. Expected at most 3 but received 4.
+          at: GDScript::reload (res://tests/turret_targeting_test.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Parse Error: Too many arguments for "new()" call. Expected at most 3 but received 4.
+          at: GDScript::reload (res://tests/turret_targeting_test.gd:59)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:32)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+ERROR: Failed to load script "res://tests/turret_targeting_test.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] execute_test_file (res://tests/main_test_runner.gd:32)
+       [1] run_all_tests (res://tests/main_test_runner.gd:26)
+       [2] _ready (res://tests/main_test_runner.gd:8)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: execute_test_file (res://tests/main_test_runner.gd:33)
+          GDScript backtrace (most recent call first):
+              [0] execute_test_file (res://tests/main_test_runner.gd:33)
+              [1] run_all_tests (res://tests/main_test_runner.gd:26)
+              [2] _ready (res://tests/main_test_runner.gd:8)
+Executing: res://tests/visual_chunking_test.gd
+Running VisualChunking Tests...
+All VisualChunking tests passed.
+Executing: res://tests/game_config_registry_test.gd
+Running GameConfigRegistry Tests...
+All GameConfigRegistry tests passed.
+--- All tests finished. Quitting. ---
+WARNING: 7 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
+WARNING: 25 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2535)
+ERROR: 8 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

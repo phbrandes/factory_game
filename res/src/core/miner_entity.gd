@@ -1,4 +1,3 @@
-class_name MinerEntity
 extends GridEntity
 
 ## Pure data representation of an extraction machine.
