@@ -27,13 +27,13 @@ func _test_round_robin_split() -> void:
 	splitter.tick()
 	assert(belt_a.items[0] == "iron", "First item did not go to Output A.")
 	assert(belt_b.items[0] == "", "Item duplicated to Output B.")
-	belt_a.items[0] = ""  # Manually clear slot
+	belt_a.tick() # Clear belt A
 	
 	# Push Item 2
 	assert(splitter.receive_item("copper"), "Splitter rejected second item.")
 	splitter.tick()
 	assert(belt_b.items[0] == "copper", "Second item did not go to Output B.")
-	belt_b.items[0] = ""  # Manually clear slot
+	belt_b.tick() # Clear belt B
 	
 	# Push Item 3 (Should wrap back to A)
 	assert(splitter.receive_item("coal"), "Splitter rejected third item.")

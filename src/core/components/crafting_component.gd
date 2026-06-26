@@ -54,8 +54,6 @@ func _try_start_craft() -> void:
 		
 	current_state = State.CRAFTING
 	progress_ticks = 0
-	# Immediately process the first tick of crafting in the same cycle
-	_process_craft()
 
 ## Advances the progress bar.
 func _process_craft() -> void:

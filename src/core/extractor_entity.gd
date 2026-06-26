@@ -47,8 +47,14 @@ func _try_grab() -> void:
 	# For Phase 3, we just grab the first available item if we are generic.
 	# A filter-inserter would check for specific items here.
 	var available_items = []
-	if source_entity.get("output_inventory") != null: # Hacky introspection for Phase 3 simplicity
+	
+	# Check for output_inventory (ProductionEntity)
+	if source_entity.get("output_inventory") != null:
 		available_items = source_entity.output_inventory.contents.keys()
+	# Check for inventory (StorageEntity)
+	elif source_entity.get("inventory") != null:
+		available_items = source_entity.inventory.contents.keys()
+	# Check for belt items
 	elif source_entity is BeltSegment and source_entity.items[0] != "":
 		available_items = [source_entity.items[0]]
 

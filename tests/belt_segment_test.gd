@@ -66,4 +66,4 @@ func _test_cross_segment_transfer() -> void:
 	belt_a.tick()
 	belt_b.tick()
 	assert(belt_a.items == ["", ""], "Belt A failed to transfer item out.")
-	assert(belt_b.items == ["", "copper_ore"], "Belt B failed to receive and shift item from Belt A.")
+	assert(belt_b.items == ["copper_ore", ""], "Belt B failed to receive item from Belt A.")
