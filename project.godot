@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/features=PackedStringArray("4.7")
+config/name="FactorySimulation"
 
 [autoload]
 
@@ -57,7 +58,3 @@ renderer/rendering_method.mobile="gl_compatibility"
 [run]
 
 main_scene="res://main.tscn"
-
-[ï»¿[application]
-
-"config]name"="FactorySimulation"
