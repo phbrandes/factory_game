@@ -20,11 +20,11 @@ The project is built around a strict separation between simulation and rendering
 ```text
 project.godot        Godot project configuration
 src/                 Runtime game code
-	core/              Simulation, entities, components, config, resources
-	controllers/       Input and interaction bridges
-	ui/                UI scenes and controls
-	visuals/           Rendering and visual presentation
-	docs/              Project documentation and ADRs
+    core/              Simulation, entities, components, config, resources
+    controllers/       Input and interaction bridges
+    ui/                UI scenes and controls
+    visuals/           Rendering and visual presentation
+    docs/              Project documentation and ADRs
 tests/               Automated test scripts
 res/                 Legacy duplicate tree to ignore in favor of top-level src/ and tests/
 ```
