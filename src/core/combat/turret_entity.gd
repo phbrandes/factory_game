@@ -16,7 +16,7 @@ func tick(all_enemies: Array) -> void:
 		_cooldown -= 1
 		return
 		
-	var target = targeting.get_best_target(grid_position, all_enemies)
+	var target = targeting.get_best_target(position, all_enemies)
 	if target:
 		target.health.take_damage(damage)
 		_cooldown = fire_rate_ticks
