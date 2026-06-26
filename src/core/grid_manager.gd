@@ -4,6 +4,9 @@ extends RefCounted
 ## Pure data representation of the factory floor.
 ## Uses a spatial dictionary for O(1) lookups and infinite expansion.
 
+signal entity_placed(entity: GridEntity)
+signal entity_removed(entity: GridEntity)
+
 # Maps Vector2i to GridEntity references
 var _grid: Dictionary = {}
 
@@ -30,6 +33,8 @@ func place_entity(entity: GridEntity, pos: Vector2i) -> bool:
 	for x in range(entity.size.x):
 		for y in range(entity.size.y):
 			_grid[pos + Vector2i(x, y)] = entity
+		
+	emit_signal("entity_placed", entity)
 			
 	return true
 
@@ -43,6 +48,12 @@ func remove_entity(entity: GridEntity) -> void:
 	for x in range(entity.size.x):
 		for y in range(entity.size.y):
 			_grid.erase(pos + Vector2i(x, y))
+
+	emit_signal("entity_removed", entity)
+
+## Returns true if a tile can be traversed by pathfinding.
+func is_walkable(pos: Vector2i) -> bool:
+	return is_cell_empty(pos)
 
 ## Clears the entire grid (used for loading saves/replays).
 func clear_all() -> void:

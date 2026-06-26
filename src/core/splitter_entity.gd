@@ -8,8 +8,8 @@ var outputs: Array[Object] = []
 var _current_output_index: int = 0
 var _internal_buffer: String = ""
 
-func _init(p_id: String, size: Vector2i = Vector2i.ONE) -> void:
-	super._init(p_id, size)
+func _init(p_id: String, p_size: Vector2i = Vector2i.ONE) -> void:
+	super._init(p_id, p_size)
 
 ## Adds an output target to the splitter's routing list.
 func add_output(target: Object) -> void:

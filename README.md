@@ -1,8 +1,8 @@
 # factory_game
 
 [![Godot](https://img.shields.io/badge/Godot-4.7-478cbf?logo=godotengine&logoColor=white)](https://godotengine.org/)
-[![Project](https://img.shields.io/badge/Project-factory__game-2f855a)]()
-[![Tests](https://img.shields.io/badge/tests-centralized%20runner-8b5cf6)]()
+[![Project](https://img.shields.io/badge/Project-factory__game-2f855a)](https://github.com/phbrandes/factory_game)
+[![Tests](https://img.shields.io/badge/tests-centralized%20runner-8b5cf6)](https://github.com/phbrandes/factory_game/tree/main/tests)
 
 Godot 4.x factory automation roguelike focused on deterministic simulation, replayability, and testable data-first gameplay systems.
 
@@ -20,11 +20,11 @@ The project is built around a strict separation between simulation and rendering
 ```text
 project.godot        Godot project configuration
 src/                 Runtime game code
-	core/              Simulation, entities, components, config, resources
-	controllers/       Input and interaction bridges
-	ui/                UI scenes and controls
-	visuals/           Rendering and visual presentation
-	docs/              Project documentation and ADRs
+    core/              Simulation, entities, components, config, resources
+    controllers/       Input and interaction bridges
+    ui/                UI scenes and controls
+    visuals/           Rendering and visual presentation
+    docs/              Project documentation and ADRs
 tests/               Automated test scripts
 res/                 Legacy duplicate tree to ignore in favor of top-level src/ and tests/
 ```
