@@ -1,4 +1,3 @@
-class_name TestGameConfigRegistry
 extends Node
 
 ## Standalone test runner verifying JSON parsing and stat retrieval.
