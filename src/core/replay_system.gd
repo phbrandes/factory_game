@@ -40,7 +40,7 @@ func serialize() -> Dictionary:
 		
 	return {
 		"save_version": save_version,
-		"seed": seed,
+		"seed": _seed,
 		"actions": serialized_actions
 	}
 
