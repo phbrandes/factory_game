@@ -1,23 +1,30 @@
 ## tests/core/world/chunk_grid_test.gd
 extends Node
 
-const SparseChunkGrid = preload("/home/phbrandes/Documents/factory_game/src/visuals/chunking/chunk_grid.gd")
-
 func run_tests() -> void:
-	var grid = SparseChunkGrid.new()
-	
-	# Test 1: Write/Read same chunk
-	grid.set_cell(Vector2i(5, 5), "TEST_A")
-	assert(grid.get_cell(Vector2i(5, 5)) == "TEST_A", "Failed to retrieve local cell.")
-	
-	# Test 2: Crossing Boundary (15 -> 16)
-	grid.set_cell(Vector2i(15, 0), "BOUNDARY_A")
-	grid.set_cell(Vector2i(16, 0), "BOUNDARY_B")
-	
-	assert(grid.get_cell(Vector2i(15, 0)) == "BOUNDARY_A", "Failed chunk boundary A.")
-	assert(grid.get_cell(Vector2i(16, 0)) == "BOUNDARY_B", "Failed chunk boundary B.")
-	
-	# Test 3: Sparse Behavior
-	assert(grid.get_active_chunk_count() == 2, "Chunk count mismatch. Expected 2 chunks.")
-	
-	print("  [PASS] SparseChunkGrid: All boundary and mapping tests passed.")
+    # 1. Defensive Check
+    if not SparseChunkGrid:
+        push_error("CRITICAL: Could not load SparseChunkGrid from /home/phbrandes/Documents/factory_game/src/visuals/chunking/chunk_grid.gd")
+        return
+
+    var grid = SparseChunkGrid.new()
+    
+    # 2. Test 1: Write/Read same chunk
+    grid.set_cell(Vector2i(5, 5), "TEST_A")
+    if grid.get_cell(Vector2i(5, 5)) != "TEST_A":
+        push_error("Failed to retrieve local cell.")
+    
+    # 3. Test 2: Crossing Boundary (15 -> 16)
+    grid.set_cell(Vector2i(15, 0), "BOUNDARY_A")
+    grid.set_cell(Vector2i(16, 0), "BOUNDARY_B")
+    
+    if grid.get_cell(Vector2i(15, 0)) != "BOUNDARY_A":
+        push_error("Failed chunk boundary A.")
+    if grid.get_cell(Vector2i(16, 0)) != "BOUNDARY_B":
+        push_error("Failed chunk boundary B.")
+    
+    # 4. Test 3: Sparse Behavior
+    if grid.get_active_chunk_count() != 2:
+        push_error("Chunk count mismatch. Expected 2 chunks, got " + str(grid.get_active_chunk_count()))
+    
+    print("  [PASS] SparseChunkGrid: All boundary and mapping tests passed.")
