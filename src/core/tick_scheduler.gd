@@ -32,6 +32,10 @@ func reset() -> void:
 	_accumulator = 0.0
 	_subscribers.clear()
 
+func restore_state(tick_number: int, accumulator: float = 0.0) -> void:
+	_current_tick = tick_number
+	_accumulator = accumulator
+
 func register_subscriber(callable: Callable) -> void:
 	if not _subscribers.has(callable):
 		_subscribers.append(callable)
