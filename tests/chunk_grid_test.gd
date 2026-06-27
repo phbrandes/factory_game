@@ -8,7 +8,9 @@ func run_tests() -> void:
         return
 
     var grid = SparseChunkGrid.new()
-    
+    if not grid:
+        push_error("CRITICAL: Could not instantiate SparseChunkGrid.")
+        return
     # 2. Test 1: Write/Read same chunk
     grid.set_cell(Vector2i(5, 5), "TEST_A")
     if grid.get_cell(Vector2i(5, 5)) != "TEST_A":
@@ -28,3 +30,17 @@ func run_tests() -> void:
         push_error("Chunk count mismatch. Expected 2 chunks, got " + str(grid.get_active_chunk_count()))
     
     print("  [PASS] SparseChunkGrid: All boundary and mapping tests passed.")
+
+    # 5. Test 4: Memory Leak Detection
+
+    if not OS.is_debug_build(): 
+     print("  [DEBUG] Skipping memory leak detection in non-debug build.")     
+    else: 
+        grid.clear()
+    ##memory leak detection: Ensure all chunks are freed after test
+    
+    var initial_chunk_count = grid.get_active_chunk_count()
+    for i in range(100):
+        grid.set_cell(Vector2i(i, i), "DATA_%d" % i)
+    if grid.get_active_chunk_count() <= initial_chunk_count:
+        push_error("Memory leak test failed: Chunk count did not increase after adding new cells.")

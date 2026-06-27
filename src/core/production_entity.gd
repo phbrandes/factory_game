@@ -19,8 +19,9 @@ func set_recipe(recipe: RecipeResource) -> void:
 	crafter.set_recipe(recipe)
 
 ## TWO-PHASE LOGISTICS (Input)
-func can_accept_item() -> bool:
-	return input_inventory.has_space()
+## Updated to accept item_id to check if this specific item can fit in the stack
+func can_accept_item(item_id: String) -> bool:
+	return input_inventory.has_space_for(item_id)
 
 func receive_item(item_id: String) -> bool:
 	return input_inventory.add_item(item_id, 1)
