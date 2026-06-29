@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b8ncm225s265e"]
+
+[ext_resource type="Script" uid="uid://cdadl8p44ywuu" path="res://src/ui/time_bar/time_bar_ui.gd" id="1_ou8rs"]
+
+[node name="TimeBarUI" type="Control" unique_id=287721177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ou8rs")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1965831683]
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1458317007]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1523220707]
+layout_mode = 2
+
+[node name="pausebutton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=900355925]
+layout_mode = 2
+text = "⏸"
+
+[node name="playbutton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1128636174]
+layout_mode = 2
+text = "▶"
+
+[node name="2xbutton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1155766596]
+layout_mode = 2
+text = "▶▶"
+
+[node name="3xbutton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1723663591]
+layout_mode = 2
+text = "▶▶"
+
+[node name="4xbutton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=764124416]
+layout_mode = 2
+text = "4x"
+
+[node name="5xbutton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1289105065]
+layout_mode = 2
+text = "5x"
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1834904206]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=932934189]
+layout_mode = 2
+metadata/update_clock = true
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/pausebutton" to="." method="_on_pausebutton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/playbutton" to="." method="_on_playbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/2xbutton" to="." method="_on_xbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/3xbutton" to="." method="_on_x3button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/4xbutton" to="." method="_on_x4button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/5xbutton" to="." method="_on_5xbutton_pressed"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/HBoxContainer/TimeLabel" to="." method="_on_time_label_gui_input"]

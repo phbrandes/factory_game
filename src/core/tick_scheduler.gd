@@ -9,10 +9,10 @@ enum Mode {
 
 enum TickSpeed {
 	X1,
-    X2,
-    X3,
-    X4,
-    X5
+	X2, 
+	X3,
+	X4,
+	X5,
 }
 
 const TICK_INTERVAL_SEC: float = 0.1
@@ -54,6 +54,19 @@ func set_speed(speed: TickSpeed) -> void:
 		TickSpeed.X5:
 			speed_multiplier = 5.0
 
+func get_speed() -> TickSpeed:
+	match TickSpeed.speed_multiplier:
+		1.0:
+			return TickSpeed.X1
+		2.0:
+			return TickSpeed.X2
+		3.0:
+			return TickSpeed.X3
+		4.0:
+			return TickSpeed.X4
+		5.0:
+			return TickSpeed.X5
+
 func get_tick_interval() -> float:
 
 	return TICK_INTERVAL_SEC / speed_multiplier
@@ -86,33 +99,9 @@ func _execute_tick() -> void:
 		if callable.is_valid():
 			callable.call(_current_tick)
 
-    # subscribers here
+	# subscribers here
 	tick_completed.emit(_current_tick)
 
-func _on_speed_1x_pressed():
-
-	TickScheduler.set_speed(TickSpeed.X1)
-
-
-func _on_speed_2x_pressed():
-	
-	TickScheduler.set_speed(TickSpeed.X2)
-
-
-
-func _on_speed_3x_pressed():
-
-	TickScheduler.set_speed(TickSpeed.X3)
-
-
-func _on_speed_4x_pressed():
-
-	TickScheduler.set_speed(TickSpeed.X4)
-
-
-func _on_speed_5x_pressed():
-
-	TickScheduler.set_speed(TickSpeed.X5)
 
 func reset() -> void:
 	_is_running = false
