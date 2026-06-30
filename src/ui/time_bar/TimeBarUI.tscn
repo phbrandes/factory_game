@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b8ncm225s265e"]
 
-[ext_resource type="Script" uid="uid://cdadl8p44ywuu" path="res://src/ui/time_bar/time_bar_ui.gd" id="1_ou8rs"]
+[ext_resource type="Script" uid="uid://cuu4ahhajb7nv" path="res://src/ui/time_bar/time_bar_ui.gd" id="1_ou8rs"]
 
 [node name="TimeBarUI" type="Control" unique_id=287721177]
 layout_mode = 3

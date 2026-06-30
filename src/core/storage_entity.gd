@@ -7,6 +7,7 @@ extends GridEntity
 var inventory: InventoryComponent
 
 func _init(p_id: String, capacity: int, p_size: Vector2i = Vector2i.ONE) -> void:
+	# Initialize the storage entity with a unique ID, inventory capacity, and optional size.
 	super._init(p_id, p_size)
 	inventory = InventoryComponent.new(capacity)
 

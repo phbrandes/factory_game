@@ -41,6 +41,9 @@ func resume() -> void:
 func stop() -> void:
 	_is_running = false
 
+func is_running() -> bool:
+	return _is_running
+
 func set_speed(speed: TickSpeed) -> void:
 	match speed:
 		TickSpeed.X1:
@@ -55,7 +58,7 @@ func set_speed(speed: TickSpeed) -> void:
 			speed_multiplier = 5.0
 
 func get_speed() -> TickSpeed:
-	match TickSpeed.speed_multiplier:
+	match speed_multiplier:
 		1.0:
 			return TickSpeed.X1
 		2.0:
@@ -66,6 +69,8 @@ func get_speed() -> TickSpeed:
 			return TickSpeed.X4
 		5.0:
 			return TickSpeed.X5
+		_:
+			return TickSpeed.X1
 
 func get_tick_interval() -> float:
 
