@@ -8,13 +8,26 @@ enum Mode {
 	MANUAL,
 }
 
+enum Speed {
+	PAUSED = 0,
+	X1 = 1,
+	X2 = 2,
+	X3 = 3,
+	X4 = 4,
+}
+
 const TICK_INTERVAL_SEC: float = 0.1
 
 var _current_tick: int = 0
 var _accumulator: float = 0.0
 var _is_running: bool = false
 var _mode: Mode = Mode.REALTIME
+var _speed: Speed = Speed.X1
 var _subscribers: Array[Callable] = []
+
+var paused: bool:
+	get:
+		return not _is_running or _speed == Speed.PAUSED
 
 func _ready() -> void:
 	process_priority = -100
@@ -22,14 +35,35 @@ func _ready() -> void:
 func start(mode: Mode = Mode.REALTIME) -> void:
 	_mode = mode
 	_is_running = true
+	if _speed == Speed.PAUSED:
+		_speed = Speed.X1
 
 func pause() -> void:
 	_is_running = false
+
+func resume() -> void:
+	_is_running = true
+	if _speed == Speed.PAUSED:
+		_speed = Speed.X1
+
+func set_speed(new_speed: Speed) -> void:
+	if new_speed == Speed.PAUSED:
+		pause()
+		_speed = Speed.PAUSED
+	else:
+		_speed = new_speed
+		_is_running = true
+
+func get_speed() -> Speed:
+	if not _is_running:
+		return Speed.PAUSED
+	return _speed
 
 func reset() -> void:
 	_is_running = false
 	_current_tick = 0
 	_accumulator = 0.0
+	_speed = Speed.X1
 	_subscribers.clear()
 
 func register_subscriber(callable: Callable) -> void:
@@ -42,10 +76,10 @@ func unregister_subscriber(callable: Callable) -> void:
 		_subscribers.remove_at(index)
 
 func _process(delta: float) -> void:
-	if not _is_running or _mode == Mode.MANUAL:
+	if not _is_running or _mode == Mode.MANUAL or _speed == Speed.PAUSED:
 		return
 
-	_accumulator += delta
+	_accumulator += delta * float(_speed)
 	while _accumulator >= TICK_INTERVAL_SEC:
 		_accumulator -= TICK_INTERVAL_SEC
 		_execute_tick()
