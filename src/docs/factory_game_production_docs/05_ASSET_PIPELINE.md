@@ -14,19 +14,19 @@ Greybox
 UI:
 
 - Google Stitch
+- Godot 4.4+ UI System
 
 Concept Art:
 
 - AI image generation
+- itch.io premade concept art packs
 
 Sprites:
 
 - Aseprite
 - Krita
-
-3D Concepts:
-
-- Blender
+- Godot 4.4+ Sprite2D
+- Godot 4.4+ AnimatedSprite2D
 
 ## AI Workflow
 
@@ -39,9 +39,58 @@ Sprites:
 ## Naming Convention
 
 building_miner_t1
+
 building_furnace_t1
+
 conveyor_basic
+
 turret_gun_t1
+
+turret_gun_t2
+
+turret_gun_t3
+
+turret_gun_t4
+
+defence_wall_t1
+
+defence_wall_t2
+
+defence_wall_t3
+
+defence_wall_t4
+
+defence_building_t1
+
+defence_building_t2
+
+defence_building_t3
+
+defence_building_t4
+
+player_character
+
+player_hud
+
+player_hud_health
+
+player_inventory
+
+player_minimap
+
+player_equipment
+
+player_abilities
+
+hq_contracts
+
+npc_faction_1
+
+npc_faction_2
+
+npc_faction_3
+
+npc_contracts
 
 ## Import Rules
 

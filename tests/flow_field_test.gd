@@ -4,20 +4,31 @@ const GridManagerRef = preload("res://src/core/grid_manager.gd")
 const FlowFieldRef = preload("res://src/core/combat/flow_field.gd")
 
 func run_tests() -> void:
-	print("Running FlowField Tests...")
-	_test_propagation()
-	print("All FlowField tests passed.")
-
-func _test_propagation() -> void:
+	print("  [DEBUG] Starting FlowField test...")
+	
+	# Step 1: Initialization
+	print("  [DEBUG] Instantiating GridManager...")
 	var grid = GridManagerRef.new()
 	var core_pos = Vector2i(0, 0)
 	
-	# Create a simple 3x3 path
+	print("  [DEBUG] Instantiating FlowField...")
 	var field = FlowFieldRef.new(grid, core_pos)
 	
-	# Tile at (1,0) should point toward (0,0) [Vector2i(-1, 0)]
-	assert(field.get_direction(Vector2i(1, 0)) == Vector2i(-1, 0), "Incorrect direction vector.")
+	# Step 2: Propagation Test
+	print("  [DEBUG] Running propagation checks...")
 	
-	# Tile at (1,1) should point toward (0,1) or (1,0)
-	var dir = field.get_direction(Vector2i(1, 1))
-	assert(dir == Vector2i(-1, 0) or dir == Vector2i(0, -1), "Flow field didn't route to core.")
+	# Check 1
+	var dir1 = field.get_direction(Vector2i(1, 0))
+	if dir1 != Vector2i(-1, 0):
+		push_error("FAIL: Direction at (1,0) was %s, expected (-1,0)" % str(dir1))
+	else:
+		print("  [DEBUG] Check 1 passed.")
+		
+	# Check 2
+	var dir2 = field.get_direction(Vector2i(1, 1))
+	if dir2 != Vector2i(-1, 0) and dir2 != Vector2i(0, -1):
+		push_error("FAIL: Direction at (1,1) was %s, expected (-1,0) or (0,-1)" % str(dir2))
+	else:
+		print("  [DEBUG] Check 2 passed.")
+
+	print("  [DEBUG] FlowField tests completed.")

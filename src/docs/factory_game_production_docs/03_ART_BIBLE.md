@@ -2,7 +2,7 @@
 
 ## Visual Goal
 
-Readable industrial automation.
+Readable industrial automation. and defensible against alien threats. with a clear and consistent visual language that communicates the function and purpose of each building and unit.
 
 ## Camera
 
@@ -23,6 +23,10 @@ Production = Square
 Storage = Rectangle
 Power = Circular
 Military = Angular
+transportation = triangle
+player = star
+enemy = hexagon
+alies = pentagon
 
 ## Color Language
 
@@ -30,7 +34,9 @@ Iron = Gray
 Copper = Orange
 Power = Yellow
 Enemy = Red
-Player = Blue-Green
+boss = Purple
+Player = Blue
+alies = green
 
 ## UI Philosophy
 

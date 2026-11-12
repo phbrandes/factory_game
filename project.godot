@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.7")
 [autoload]
 
 TickScheduler="*res://src/core/tick_scheduler.gd"
+GlobalClock="*uid://j8s31te53kc2"
 
 [config]
 

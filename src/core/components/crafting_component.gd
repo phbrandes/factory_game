@@ -54,8 +54,6 @@ func _try_start_craft() -> void:
 		
 	current_state = State.CRAFTING
 	progress_ticks = 0
-	# Immediately process the first tick of crafting in the same cycle
-	_process_craft()
 
 ## Advances the progress bar.
 func _process_craft() -> void:
@@ -66,12 +64,7 @@ func _process_craft() -> void:
 
 ## Attempts to push crafted items to the output inventory.
 func _try_finish_craft() -> void:
-	# Check if we have space for ALL outputs
-	var required_space = 0
-	for item_id in active_recipe.outputs:
-		required_space += active_recipe.outputs[item_id]
-		
-	if not output_inventory.has_space_for(required_space):
+	if not output_inventory.has_space_for_multiple(active_recipe.outputs):
 		return # Remain STALLED
 		
 	# Space exists! Generate outputs.
