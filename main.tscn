@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cl07sydehl5to"]
+
+[ext_resource type="Script" path="res://src/controllers/game_session_controller.gd" id="1_session"]
+[ext_resource type="PackedScene" uid="uid://b8ncm225s265e" path="res://src/ui/time_bar/TimeBarUI.tscn" id="2_timebar"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_session")
+
+[node name="HUDCanvas" type="CanvasLayer" parent="."]
+
+[node name="TimeBarUI" parent="HUDCanvas" instance=ExtResource("2_timebar")]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 56.0
+

@@ -28,6 +28,7 @@ static var _machine_frames_cache: Dictionary = {}
 static var _belt_frames_cache: Dictionary = {}
 static var _extractor_frames_cache: Dictionary = {}
 static var _enemy_frames_cache: Dictionary = {}
+static var _terrain_tile_cache: Dictionary = {}
 static var _fallback_cache: Dictionary = {}
 
 # Maps item_id strings to (col, row) coordinates in the 5x5 (16x16 cell) Items.png sheet
@@ -597,6 +598,33 @@ static func get_terrain_texture(terrain_id: String) -> Texture2D:
 	if tex != null:
 		return tex
 	return _get_or_create_fallback_texture(terrain_id, Vector2i(16, 16))
+
+## Returns a single 16x16 tile Texture2D (slicing 3x3 autotile sheets like Iron_Ore_Tiles.png or Coal_Tiles.png to their center 16x16 tile).
+static func get_terrain_tile_texture(terrain_id: String) -> Texture2D:
+	var key := terrain_id.to_lower()
+	if _terrain_tile_cache.has(key):
+		return _terrain_tile_cache[key]
+		
+	var raw_tex := get_terrain_texture(key)
+	if raw_tex == null:
+		return _get_or_create_fallback_texture(key, Vector2i(16, 16))
+		
+	# Single 16x16 textures (Ground_Tile, Rock_Tile, Copper_Rock, Gold_Rock) or Tree (32x48)
+	if key in ["ground", "rock", "copper_ore", "gold_ore", "tree"]:
+		_terrain_tile_cache[key] = raw_tex
+		return raw_tex
+		
+	# 3x3 autotile sheets (Iron_Ore_Tiles 48x48, Coal_Tiles 48x48, Grass_Tileset 80x48, Water_Tileset 80x48):
+	# Slice the center 16x16 tile at (16, 16)
+	if raw_tex.get_width() >= 32 and raw_tex.get_height() >= 32:
+		var atlas := AtlasTexture.new()
+		atlas.atlas = raw_tex
+		atlas.region = Rect2(16, 16, 16, 16)
+		_terrain_tile_cache[key] = atlas
+		return atlas
+		
+	_terrain_tile_cache[key] = raw_tex
+	return raw_tex
 
 ## Returns Sci-Fi UI textures from user interface(inventory) assets/Scifi-Ui/.
 static func get_ui_texture(ui_element: String) -> Texture2D:

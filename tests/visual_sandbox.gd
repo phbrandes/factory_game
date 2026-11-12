@@ -25,6 +25,8 @@ const RecipeResourceRef = preload("res://src/core/resources/recipe_resource.gd")
 const GridDirectionRef = preload("res://src/core/grid_direction.gd")
 
 const TickSchedulerRef = preload("res://src/core/tick_scheduler.gd")
+const WorldGeneratorRef = preload("res://src/core/world_generator.gd")
+const WorldMapRendererRef = preload("res://src/visuals/world_map_renderer.gd")
 const FactoryRendererRef = preload("res://src/visuals/factory_renderer.gd")
 const VisualAssetRegistryRef = preload("res://src/visuals/visual_asset_registry.gd")
 
@@ -33,10 +35,11 @@ const MAP_WIDTH: int = 18
 const MAP_HEIGHT: int = 11
 
 var grid: GridManager
+var world_generator: RefCounted
+var world_map_renderer: Node2D
 var renderer: FactoryRenderer
 var scheduler: Node
 var camera: Camera2D
-var ground_container: Node2D
 var ghost_sprite: Sprite2D
 var hud_label: Label
 
@@ -63,13 +66,14 @@ var palette_index: int = 0
 
 func _ready() -> void:
 	grid = GridManagerRef.new()
+	world_generator = WorldGeneratorRef.new(1337)
 	
-	# 1. Ground & Resource Patch Layer
-	ground_container = Node2D.new()
-	ground_container.name = "GroundLayer"
-	ground_container.z_index = -10
-	add_child(ground_container)
-	_build_ground_and_resources()
+	# 1. Procedural Chunked Ground & Resource Patch Layer (Milestone 1)
+	world_map_renderer = WorldMapRendererRef.new() as Node2D
+	world_map_renderer.name = "WorldMapRenderer"
+	add_child(world_map_renderer)
+	world_map_renderer.setup(world_generator, CELL_SIZE)
+	world_map_renderer.update_active_chunks(Vector2i(-1, -1), Vector2i(1, 1))
 	
 	# 2. FactoryRenderer Bridge
 	renderer = FactoryRendererRef.new()
@@ -107,50 +111,7 @@ func _ready() -> void:
 	scheduler.start()
 
 func _build_ground_and_resources() -> void:
-	var scale_factor := CELL_SIZE / float(VisualAssetRegistryRef.NATIVE_TILE_PIXELS)
-	var ground_tex := VisualAssetRegistryRef.get_terrain_texture("ground")
-	var copper_tex := VisualAssetRegistryRef.get_terrain_texture("copper_ore")
-	var gold_tex := VisualAssetRegistryRef.get_terrain_texture("gold_ore")
-	var rock_tex := VisualAssetRegistryRef.get_terrain_texture("rock")
-	var tree_tex := VisualAssetRegistryRef.get_terrain_texture("tree")
-	
-	for x in range(MAP_WIDTH):
-		for y in range(MAP_HEIGHT):
-			var tile := Sprite2D.new()
-			tile.texture = ground_tex
-			tile.scale = Vector2.ONE * scale_factor
-			tile.position = Vector2(x, y) * CELL_SIZE
-			tile.modulate = Color(0.88, 0.92, 0.85, 1.0) if ((x + y) % 2 == 0) else Color(0.82, 0.87, 0.80, 1.0)
-			ground_container.add_child(tile)
-			
-			# Add decorative trees and rocks along the top/right edges
-			if (x == 0 or x == MAP_WIDTH - 1) and y % 2 == 0:
-				var tree := Sprite2D.new()
-				tree.texture = tree_tex
-				tree.scale = Vector2.ONE * (scale_factor * 0.5)
-				tree.position = Vector2(x, y) * CELL_SIZE
-				ground_container.add_child(tree)
-			elif y == 0 and x in [3, 4, 5]:
-				var rock := Sprite2D.new()
-				rock.texture = rock_tex
-				rock.scale = Vector2.ONE * scale_factor
-				rock.position = Vector2(x, y) * CELL_SIZE
-				ground_container.add_child(rock)
-				
-	# Place resource patches under the miners at (2, 2) and (2, 5)
-	for ore_pos in [Vector2i(1, 2), Vector2i(2, 2), Vector2i(2, 3)]:
-		var ore := Sprite2D.new()
-		ore.texture = copper_tex
-		ore.scale = Vector2.ONE * scale_factor
-		ore.position = Vector2(ore_pos) * CELL_SIZE
-		ground_container.add_child(ore)
-		
-	for gold_pos in [Vector2i(1, 5), Vector2i(2, 5)]:
-		var gold := Sprite2D.new()
-		gold.texture = gold_tex
-		gold.scale = Vector2.ONE * scale_factor
-		gold.position = Vector2(gold_pos) * CELL_SIZE
-		ground_container.add_child(gold)
+	pass # Legacy helper removed, WorldMapRenderer handles terrain now
 
 func _setup_live_production_line() -> void:
 	# Row Y = 2: Miner -> Arm -> Belt (length 3) -> Arm -> Stone Furnace -> Arm -> Assembler -> Arm -> Crate
@@ -299,6 +260,10 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT): move_dir.x -= 1
 	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT): move_dir.x += 1
 	camera.position += move_dir.normalized() * 400.0 * delta
+	if move_dir != Vector2.ZERO and world_map_renderer != null:
+		var view_size := get_viewport_rect().size / camera.zoom
+		var view_rect := Rect2(camera.position - view_size * 0.5, view_size)
+		world_map_renderer.update_from_world_rect(view_rect, 1)
 	
 	# Snap build ghost to mouse grid tile
 	var mouse_world := get_global_mouse_position()
