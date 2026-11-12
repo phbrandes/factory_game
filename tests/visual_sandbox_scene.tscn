@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d3v7sandbox01"]
+
+[ext_resource type="Script" path="res://tests/visual_sandbox.gd" id="1_sandbox"]
+
+[node name="VisualSandbox" type="Node2D"]
+script = ExtResource("1_sandbox")
+

@@ -2,6 +2,8 @@ extends Node2D
 
 ## Handles mouse tracking, grid snapping, and routing inputs to the simulation.
 
+const VisualAssetRegistryRef = preload("res://src/visuals/visual_asset_registry.gd")
+
 var grid: GridManager
 var replay_system
 var scheduler: Node # TickScheduler reference
@@ -10,6 +12,7 @@ var radial_menu
 
 var current_build_item_id: String = ""
 var ghost_sprite: Sprite2D
+var cell_size_pixels: float = 64.0
 
 func setup(p_grid: GridManager, p_replay, p_scheduler: Node, p_tile_map: TileMapLayer, p_menu) -> void:
 	grid = p_grid
@@ -25,7 +28,6 @@ func setup(p_grid: GridManager, p_replay, p_scheduler: Node, p_tile_map: TileMap
 
 func _setup_ghost_sprite() -> void:
 	ghost_sprite = Sprite2D.new()
-	# Greybox placeholder: In a real scenario, texture updates based on current_build_item_id
 	ghost_sprite.modulate = Color(0.2, 1.0, 0.2, 0.5) # Semi-transparent green
 	add_child(ghost_sprite)
 	ghost_sprite.hide()
@@ -37,11 +39,21 @@ func _process(_delta: float) -> void:
 		
 	ghost_sprite.show()
 	var mouse_world_pos = get_global_mouse_position()
+	var grid_pos := Vector2i.ZERO
 	
 	if tile_map != null:
-		var grid_pos = tile_map.local_to_map(mouse_world_pos)
+		grid_pos = tile_map.local_to_map(mouse_world_pos)
 		var snap_world_pos = tile_map.map_to_local(grid_pos)
 		ghost_sprite.global_position = snap_world_pos
+	else:
+		grid_pos = Vector2i((mouse_world_pos / cell_size_pixels).floor())
+		ghost_sprite.global_position = Vector2(grid_pos) * cell_size_pixels
+		
+	if grid != null:
+		if grid.is_area_empty(grid_pos, Vector2i.ONE):
+			ghost_sprite.modulate = Color(0.2, 1.0, 0.2, 0.5) # Valid placement (green)
+		else:
+			ghost_sprite.modulate = Color(1.0, 0.2, 0.2, 0.5) # Blocked placement (red)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_right_click"):
@@ -52,7 +64,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			# Open radial menu if not building
 			var screen_pos = get_viewport().get_mouse_position()
-			# Hardcoded greybox items for Phase 7 UI testing
 			var available_buildings = ["belt_t1", "miner_t1", "furnace_t1", "assembler_t1"]
 			radial_menu.open(screen_pos, available_buildings)
 			
@@ -69,8 +80,6 @@ func _attempt_placement() -> void:
 	var mouse_world_pos = get_global_mouse_position()
 	var grid_pos = tile_map.local_to_map(mouse_world_pos)
 	
-	# We rely on a factory method or registry to instantiate the correct GridEntity subclass
-	# For this architectural bridge, we instantiate a base GridEntity to prove the pipeline.
 	var GridEntityRef = load("res://src/core/grid_entity.gd")
 	var new_entity = GridEntityRef.new(current_build_item_id)
 	
@@ -87,4 +96,5 @@ func _attempt_placement() -> void:
 
 func _on_build_item_selected(item_id: String) -> void:
 	current_build_item_id = item_id
-	# Update ghost texture based on item_id here
+	if ghost_sprite != null:
+		ghost_sprite.texture = VisualAssetRegistryRef.get_entity_preview_texture(item_id)
